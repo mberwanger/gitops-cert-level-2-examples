@@ -17,15 +17,15 @@ spec:
           - clusters: {}
   template:
     metadata:
-      name: "{{path.basename}}-{{name}}"
+      name: "{{.path.basename}}-{{.name}}"
     spec:
-      project: "{{metadata.labels.environment}}"
+      project: '{{index .metadata.labels "environment"}}'
       source:
         repoURL: https://github.com/codefresh-contrib/gitops-cert-level-2-examples.git
         targetRevision: HEAD
-        path: "{{path}}"
+        path: "{{.path.path}}"
       destination:
-        server: "{{server}}"
+        server: "{{.server}}"
         namespace: default
       syncPolicy:
         syncOptions:
