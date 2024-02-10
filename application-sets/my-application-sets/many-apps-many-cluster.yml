@@ -7,13 +7,11 @@ spec:
     # matrix 'parent' generator
     - matrix:
         generators:
-          # git generator, 'child' #1
           - git:
               repoURL: https://github.com/codefresh-contrib/gitops-cert-level-2-examples.git
               revision: HEAD
               directories:
-                - path: application-sets/example-apps/*
-          # cluster generator, 'child' #2
+                - path: ./application-sets/example-apps/*
           - clusters: {}
   template:
     metadata:
