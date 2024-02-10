@@ -14,19 +14,16 @@ spec:
               directories:
                 - path: applicationset/examples/matrix/cluster-addons/*
           # cluster generator, 'child' #2
-          - clusters:
-              selector:
-                matchLabels:
-                  argocd.argoproj.io/secret-type: cluster
+          - clusters: {}
   template:
     metadata:
-      name: '{{path.basename}}-{{name}}'
+      name: "{{path.basename}}-{{name}}"
     spec:
-      project: '{{metadata.labels.environment}}'
+      project: "{{metadata.labels.environment}}"
       source:
         repoURL: https://github.com/argoproj/argo-cd.git
         targetRevision: HEAD
-        path: '{{path}}'
+        path: "{{path}}"
       destination:
-        server: '{{server}}'
-        namespace: '{{path.basename}}'
+        server: "{{server}}"
+        namespace: default
